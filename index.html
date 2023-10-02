@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment</title>
+    <style>
+        /* Reset some default styles to make the iframe fill the entire screen */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        /* Style the container to fill the screen */
+        #iframe-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Style the iframe to fill the container */
+        #appscript-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            /* Remove iframe border */
+        }
+    </style>
 </head>
+
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycby7o13sPe9vxf_LbWIyW3n0XRG3yG87I4RMN8DFzbZ1l_WkqEx4_cs5JR6sjSnZZHi2sA/exec" frameborder="0"></iframe>
+    <div id="iframe-container">
+        <iframe id="appscript-iframe"
+            src="https://script.google.com/macros/s/AKfycby7o13sPe9vxf_LbWIyW3n0XRG3yG87I4RMN8DFzbZ1l_WkqEx4_cs5JR6sjSnZZHi2sA/exec"
+            frameborder="0"></iframe>
+    </div>
+    <script>
+        window.addEventListener('resize', () => {
+            const iframe = document.getElementById('appscript-iframe');
+            const container = document.getElementById('iframe-container');
+            iframe.style.width = container.offsetWidth + 'px';
+            iframe.style.height = container.offsetHeight + 'px';
+        });
+
+    </script>
 </body>
+
 </html>
